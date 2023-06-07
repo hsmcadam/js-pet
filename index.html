@@ -4,12 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>document</title>
 </head>
 <body>
-    <div>
-        hi
+<div class="title"><strong>To-Do List</strong>
+</div>
+<div class="goalForm">
+    <button class="add" onclick="add()" > ADD GOAL</button>
+</div>
+<div class="goals">
+    <div class="goal" id="goal description" onclick="typeDescription(this.id)">
+        <span id="name"><strong>name of goal </strong></span>
+        <span class="new"s> New</span>
+        <span class="done" onclick="finish(this.id)" id="1"> DONE </span>
+        <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+        <div id="description9">
+        </div>
     </div>
-    
+    <div class="goal">
+        <strong>came of goal </strong> goal description
+        <span class="new"> New</span>
+        <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>   
+    </div>
+    <div class="goal">
+        <strong>aame of goal </strong> goal description
+        <span class="new"> New</span>
+        <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>     
+    </div>
+</div>
+<div class="form" id="formGoal">
+    <form class="formG">
+        <div class="container">
+            <label><b>Goal Name</b></label>
+            <input type="text" placeholder="Enter goal name." id="nameG" required></inptut>
+            <label><b>Goal Description</b></label>
+            <input type="text" placeholder="Enter goal description." id="descriptionG" required></inptut>
+        </div>
+        <button type="button" onclick="confirm()">CONFIRM</button>
+        <button type="button" onclick="cancel()">cancel</button>
+    </form>
+</div>
+<button onclick="sort()">Sort</button>
+<script src="main.js"></script>
 </body>
 </html>
