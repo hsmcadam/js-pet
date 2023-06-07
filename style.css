@@ -1,0 +1,69 @@
+.goal{
+    padding: 20px;
+    background-color: rgb(43, 226, 73);
+    color:white;
+    margin: 40px;
+    margin-left: 300px;
+    margin-right: 500px;
+    padding-left: 60px;
+}
+
+.goalForm{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.title{
+    text-align: center;
+    background-color: red;
+    color: white;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.goal:hover{
+    transform: scale(1.25);
+}
+.description{
+    padding: 20px;
+    background-color: white;
+    color:black;
+    
+}
+.close{
+    color: white;
+    font-weight: bold;
+    margin-left: 25px;
+    text-align: right;
+}
+
+.new{
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.done{
+    margin-left: 25px;
+    background-color:white;
+    color: rgb(43, 226, 73);
+}
+
+.form{
+    display: none;
+    text-align: center;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top:0;
+    background-color: white;
+    padding: 60px;
+
+}
+
+.container{
+    padding: 16px;
+
+}
