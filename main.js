@@ -1,4 +1,4 @@
-function sort() {
+function sortOld() {
     var list = document.getElementByClass("goals");
     var unSorted=true;
     var switchY;
@@ -19,19 +19,59 @@ function sort() {
         }
     }
 }
-var i=0;
-function typeDescription(id){
-        var text=""
-        text=id
-        goal=document.getElementById(id);
-    while(i<text.length){
-        document.getElementById("description").innerHTML+=id.charAt(i);
+
+function sort(){
+    goals =document.getElementsByClassName("name");
+    i=1;
+    while(document.getElementById(i)!=null){
+        j=i-1;
+        k=i
+        while(0<=j){
+        if(goals[k].innerHTML.toLowerCase()>goals[j].innerHTML.toLowerCase()){
+            switchElements(k,j);
+            j--;
+            k--;
+        }else{
+            j-1;
+        }}
         i++;
+    }
+
+    addAndRemoveAll(i)
+
+}
+
+
+function addAndRemoveAll(i){
+    k=0;
+    while(k<i){
+        const paraK=document.getElementById(k).parentNode;
+        document.getElementsByClassName('goals')[0].appendChild(paraK);
+        document.getElementsById(k).parentNode.remove();
     }
 }
 
-function finish(id) {
-    document.getElementsByClassName("name")[id].innerHTML.style.textDecoration='line-through';
+function switchElements(i,j){
+    const paraI=document.getElementById(i).parentNode;
+    const paraJ=document.getElementById(j).parentNode;
+    getElementById(j).setAttribute('id',i);
+    getElementById("description"+j).setAttribute('id',"description"+i);
+    getElementById(i)[1].setAttribute('id',j);
+    getElementById("description"+i)[1].setAttribute('id',"description"+j);
+    
+}
+
+var i=0;
+function typeDescription(id){
+    divDid=findPlacement(id);
+    document.getElementById(divDid).innerHTML=id;
+    
+}
+
+function findPlacement(id){
+    divG=document.getElementById(id);
+    divD=divG.querySelector('.description');
+    return divD.id;
 }
 
 function add(){
@@ -41,48 +81,67 @@ function add(){
 function cancel(){
     document.getElementById('formGoal').style.display='none'
 }
+
+function idFind(){
+    i=1;
+    while(document.getElementById(i)!=null){
+        i++;
+    }
+    return i;
+}
+
 function confirm(){
-    goalName=document.getElementById("nameG").value
-    goalDescription=document.getElementById("descriptionG").value
+    var goalName=document.getElementById("nameG").value
+    var goalDescription=document.getElementById("descriptionG").value
 
     //para
-    const para=document.createElement("div");
+    var para=document.createElement("div");
     para.classList.add("goal")
     para.setAttribute('id',goalDescription);
-    para.setAttribute('onclick',typeDescription(this.id));
 
     //name
-    const nameText=document.createTextNode(goalName);
-    const spanName=document.createElement("span");
-    spanName.setAttribute('id','name');
-    spanName.appendChild(nameText);
-    para.appendChild(spanName)
+    var spanName=document.createElement("span");
+    spanName.setAttribute('class','name');
+    spanName.innerHTML=goalName;
+    para.appendChild(spanName);
     
     //new
-    const newText=document.createTextNode(" New");
-    const spanNew=document.createElement("span");
-    spanNew.appendChild(newText);
+    var spanNew=document.createElement("span");
+    spanNew.innerHTML=" New";
     spanNew.setAttribute('class','new');
-    para.appendChild(spanNew)
+    para.appendChild(spanNew);
 
     //done
-    var numberS =9;
-    const doneText=document.createTextNode(" DONE ");
-    const spanDone=document.createElement("span");
-    spanName.setAttribute('class','done');
-    spanName.setAttribute('id',numberS);
-    spanName.setAttribute('onclick',finish(this.id));
-    spanDone.appendChild(doneText);
-    para.appendChild(spanDone)
+    var numberS =idFind;
+    var spanDone=document.createElement("span");
+    spanDone.setAttribute('class','done');
+    spanDone.setAttribute('id',numberS);
+    spanDone.setAttribute('onclick',"document.getElementsByClassName('name')[id].parentNode.style.background='grey';");
+    spanDone.innerHTML=" DONE ";
+    para.appendChild(spanDone);
 
     //close
-    const spanClose=document.createElement("span");
-    spanName.setAttribute('class','close');
+    var spanClose=document.createElement("span");
+    spanClose.setAttribute('class','close');
+    spanClose.setAttribute("onclick","this.parentElement.style.display='none';")
+    spanClose.innerHTML='&times;';
     para.appendChild(spanClose);
 
     //description
-    const descriptionDiv=document.createElement("div");
+    var descriptionDiv=document.createElement("div");
+    descriptionDiv.setAttribute('class','description');
+    var idDescription="description"+numberS;
+    descriptionDiv.setAttribute('id',idDescription);
     para.appendChild(descriptionDiv);
+    para.setAttribute("onclick",'typeDescription(this.id);')
+    findNew();
 
-    document.getElementById('formGoal').style.display='none'
+    document.getElementsByClassName('goals')[0].appendChild(para)
+
+
+    document.getElementById('formGoal').style.display='none';
+}
+
+function findNew(){
+    document.getElementsByClassName('new')[0].remove();
 }

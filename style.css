@@ -24,12 +24,7 @@
 .goal:hover{
     transform: scale(1.25);
 }
-.description{
-    padding: 20px;
-    background-color: white;
-    color:black;
-    
-}
+
 .close{
     color: white;
     font-weight: bold;
