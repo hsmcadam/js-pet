@@ -26,19 +26,22 @@ function sort(){
     while(document.getElementById(i)!=null){
         j=i-1;
         k=i
-        while(0<=j){
-        if(goals[k].innerHTML.toLowerCase()>goals[j].innerHTML.toLowerCase()){
+    
+        while(1<=k&&j>=0){
+            console.log(k)
+            console.log(j)
+            console.log(document.getElementsByClassName('name')[k].innerText)
+            console.log(document.getElementsByClassName('name')[j].innerText)
+            if(document.getElementsByClassName('name')[k].innerText>document.getElementsByClassName('name')[j].innerText){
             switchElements(k,j);
             j--;
-            k--;
-        }else{
-            j-1;
-        }}
+            console.log("swap")
+            }else{
+            k=0;}
+        }
         i++;
     }
-
-    addAndRemoveAll(i)
-
+    addAndRemoveAll(i);
 }
 
 
@@ -46,18 +49,19 @@ function addAndRemoveAll(i){
     k=0;
     while(k<i){
         const paraK=document.getElementById(k).parentNode;
+        paraK.remove();
         document.getElementsByClassName('goals')[0].appendChild(paraK);
-        document.getElementsById(k).parentNode.remove();
+        k++;
     }
 }
 
 function switchElements(i,j){
     const paraI=document.getElementById(i).parentNode;
     const paraJ=document.getElementById(j).parentNode;
-    getElementById(j).setAttribute('id',i);
-    getElementById("description"+j).setAttribute('id',"description"+i);
-    getElementById(i)[1].setAttribute('id',j);
-    getElementById("description"+i)[1].setAttribute('id',"description"+j);
+    paraJ.getElementsByClassName('done')[0].setAttribute('id',i);
+    //paraJ.getElementsByClassName('descriprion')[0].setAttribute('id',"description"+i);
+    paraI.getElementsByClassName('done')[0].setAttribute('id',j);
+    //paraI.getElementsByClassName('descriprion')[0].setAttribute('id',"description"+j);
     
 }
 
@@ -67,6 +71,9 @@ function typeDescription(id){
     document.getElementById(divDid).innerHTML=id;
     
 }
+
+//document.getElementById(document.getElementById(id).querySelector('.description').id).innerHTML=id;
+
 
 function findPlacement(id){
     divG=document.getElementById(id);
@@ -112,7 +119,7 @@ function confirm(){
     para.appendChild(spanNew);
 
     //done
-    var numberS =idFind;
+    var numberS =idFind();
     var spanDone=document.createElement("span");
     spanDone.setAttribute('class','done');
     spanDone.setAttribute('id',numberS);
@@ -133,7 +140,7 @@ function confirm(){
     var idDescription="description"+numberS;
     descriptionDiv.setAttribute('id',idDescription);
     para.appendChild(descriptionDiv);
-    para.setAttribute("onclick",'typeDescription(this.id);')
+    para.setAttribute("onclick","document.getElementById(document.getElementById(this.id).querySelector('.description').id).innerHTML=id;")
     findNew();
 
     document.getElementsByClassName('goals')[0].appendChild(para)
