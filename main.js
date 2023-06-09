@@ -1,3 +1,5 @@
+var idImageSelector
+
 function sortOld() {
     var list = document.getElementByClass("goals");
     var unSorted=true;
@@ -21,29 +23,31 @@ function sortOld() {
 }
 
 function sort(){
-    goals =document.getElementsByClassName("name");
-    i=1;
-    while(document.getElementById(i)!=null){
-        j=i-1;
-        k=i
+    b=1;
+    while(document.getElementById(b)!=null){
+        i=1;
+        while(document.getElementById(i)!=null){
+            j=i-1;
+            k=i
     
-        while(1<=k&&j>=0){
-            console.log(k)
-            console.log(j)
-            console.log(document.getElementsByClassName('name')[k].innerText)
-            console.log(document.getElementsByClassName('name')[j].innerText)
-            if(document.getElementsByClassName('name')[k].innerText>document.getElementsByClassName('name')[j].innerText){
-            switchElements(k,j);
-            j--;
-            console.log("swap")
-            }else{
-            k=0;}
+            while(1<=k&&j>=0){
+                console.log(k)
+                console.log(j)
+                console.log(document.getElementsByClassName('name')[k].innerText)
+                console.log(document.getElementsByClassName('name')[j].innerText)
+                if(document.getElementsByClassName('name')[k].innerText<document.getElementsByClassName('name')[j].innerText){
+                switchElements(j-1,j);
+                j--;
+                console.log("swap")
+                }else{
+                k=0;}
+            }
+            i++;
         }
-        i++;
+        b++
+        addAndRemoveAll(i);
     }
-    addAndRemoveAll(i);
 }
-
 
 function addAndRemoveAll(i){
     k=0;
@@ -99,7 +103,9 @@ function idFind(){
 
 function confirm(){
     var goalName=document.getElementById("nameG").value
+    if(goalName!=""){
     var goalDescription=document.getElementById("descriptionG").value
+    var goalColor=document.getElementById("colorG").value;
 
     //para
     var para=document.createElement("div");
@@ -122,8 +128,25 @@ function confirm(){
     var numberS =idFind();
     var spanDone=document.createElement("span");
     spanDone.setAttribute('class','done');
+    spanDone.addEventListener('click', function() {
+
+        spanDone.style.color='grey';
+        //spanDone.style.background='grey';
+        para.style.background='grey';
+
+        //works if not changed in js
+        para.classList.toggle('checked');
+        spanDone.classList.toggle('checked');
+        progressDiv.classList.toggle('checked');
+        barDiv.classList.toggle('checked');
+
+        //works
+        spanName.classList.toggle('checkedName');
+
+        progress(numberS);
+        })
     spanDone.setAttribute('id',numberS);
-    spanDone.setAttribute('onclick',"document.getElementsByClassName('name')[id].parentNode.style.background='grey';");
+    //spanDone.setAttribute('onclick',"document.getElementsByClassName('name')[id].parentNode.style.background='grey';");
     spanDone.innerHTML=" DONE ";
     para.appendChild(spanDone);
 
@@ -134,6 +157,16 @@ function confirm(){
     spanClose.innerHTML='&times;';
     para.appendChild(spanClose);
 
+    //icon
+    var icon=document.createElement("span");
+    icon.setAttribute('class','icon');
+    icon.setAttribute('onclick','addIcon(this.parentElement)');
+    var img=document.createElement("img");
+    img.setAttribute('class','image');
+    img.setAttribute('src','images/1.jpg');
+    icon.appendChild(img);
+    para.appendChild(icon)
+
     //description
     var descriptionDiv=document.createElement("div");
     descriptionDiv.setAttribute('class','description');
@@ -141,14 +174,111 @@ function confirm(){
     descriptionDiv.setAttribute('id',idDescription);
     para.appendChild(descriptionDiv);
     para.setAttribute("onclick","document.getElementById(document.getElementById(this.id).querySelector('.description').id).innerHTML=id;")
+
+    //progress
+    var progressDiv=document.createElement("div");
+    progressDiv.setAttribute('class','progress');
+    var barDiv=document.createElement("div");
+    barDiv.setAttribute('class','bar');
+    progressDiv.appendChild(barDiv)
+    para.appendChild(progressDiv);
+
     findNew();
+    para.style.backgroundColor=goalColor,
+    spanDone.style.color=goalColor;
 
     document.getElementsByClassName('goals')[0].appendChild(para)
 
 
     document.getElementById('formGoal').style.display='none';
+
+    } else {
+        //document.getElementById('nameRequired').ClassList === 'formGoalRequired'
+    }
 }
+//var list = document.getElementsByClassName('goals');
+//list.addEventListener('click', function(ev) {
+//    if (ev.target.ClassList === 'goal') {
+//      ev.target.classList.toggle('checked');
+//    }
+//  }, false);
+
 
 function findNew(){
     document.getElementsByClassName('new')[0].remove();
 }
+
+function progress(id) {
+    var i = 0;
+  if (i == 0) {
+    i = 1;
+    var para = document.getElementsByClassName("bar")[id];
+    var width = 1;
+    var id = setInterval(frame, 30);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        para.style.display='none'
+        i = 0;
+      } else {
+        width++;
+        wide = width + "%";
+        para.style.width = wide;
+      }
+    }
+  }
+}
+//<img src="img_avatar2.png" alt="Avatar woman">
+function addIcon(parent) {
+    idImageSelector=parent.querySelector('.done').id;
+    document.getElementsByClassName('iconPicker')[0].style.display="block";
+    document.getElementsByClassName('slides')[0].style.display="block";
+    //document.getElementsByClassName('chooseImg');
+}
+
+function slides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {n = 1}    
+  if (n < 1) {n = 3}
+  for (i = 0; i < 3; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < 3; i++) {
+    console.log("dot");
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[n-1].style.display = "block";  
+  dots[n-1].className += " active";
+}
+
+function icon(n){
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dot");
+    document.getElementsByClassName('image')[idImageSelector].src="images/"+n+".jpg";
+    for (i = 0; i < 3; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+    for (i = 0; i < 3; i++) {
+        slides[i].style.display = "none";  
+    }
+    document.getElementsByClassName('iconPicker')[0].style.display="none"
+
+}
+
+function filterSearch(){
+    var searchInput = document.getElementById("searchInput");
+    var filter = searchInput.value.toUpperCase();
+    var goals= document.getElementsByClassName('name');
+    for (i = 0; i < goals.length; i++) {
+        a = goals[i];
+        if (a.innerText.toUpperCase().indexOf(filter) > -1) {
+            document.getElementsByClassName('goal')[i].style.display = "";
+        } else {
+            document.getElementsByClassName('goal')[i].style.display = "none";
+        }
+    }
+}
+

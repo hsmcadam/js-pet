@@ -1,3 +1,22 @@
+
+div.goal.checked {
+    background-color: grey;
+    padding: 20px;
+    color:white;
+    margin: 40px;
+    margin-left: 300px;
+    margin-right: 500px;
+    padding-left: 60px;
+}
+
+.done.checked {
+    background-color: grey;
+}
+
+.name.checkedName {
+    text-decoration: line-through;
+}
+
 .goal{
     padding: 20px;
     background-color: rgb(43, 226, 73);
@@ -23,6 +42,7 @@
 
 .goal:hover{
     transform: scale(1.25);
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.3)
 }
 
 .close{
@@ -46,6 +66,15 @@
     color: rgb(43, 226, 73);
 }
 
+.nameRequired{
+    color:red;
+    display: none;
+}
+
+.formGoalRequired{
+    display: block;
+}
+
 .form{
     display: none;
     text-align: center;
@@ -65,8 +94,80 @@
 
 .name{
     font-weight: bold;
+}  
+
+
+.nameRequired {
+    display: none;
+}
+  
+.nameGoal:hover + .nameRequired {
+    display: block;
+    color: red;
 }
 
-.withDescription{
-    
+.progress.checked {
+    width: 100%;
+    background-color: #ddd;
+    margin-top: 15px;
+    margin: 10px;
+}
+  
+.bar.checked {
+
+    width: 1%;
+    height: 20px;
+    background-color: #00ff1e;
+}
+
+.icon{
+    left: 100%;
+}
+
+.image {
+    width: 100px;
+    border-radius: 25%;
+    float: right;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+
+.slides{
+    display: none;
+}
+
+.iconPicker {
+    display: none;
+    text-align: center;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top:0;
+    background-color: white;
+    padding: 120px;
+}
+
+@media (min-width: 600px) {
+  
 }
