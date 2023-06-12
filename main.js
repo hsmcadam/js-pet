@@ -1,3 +1,4 @@
+
 function addAndRemoveAll(i){
     k=0;
     while(k<i){
@@ -29,6 +30,7 @@ function add(){
     document.getElementById('descriptionG').value="";
     
 }
+
 function cancel(){
     document.getElementsByClassName('form')[0].style.display="none";
 }
@@ -56,6 +58,7 @@ function confirm(){
     spanName.setAttribute('class','name');
     spanName.innerHTML=goalName;
     para.appendChild(spanName);
+    spanName.setAttribute('onclick', "this.parentElement.querySelector('.description').innerHTML=this.parentElement.id;");
     
     //new
     var spanNew=document.createElement("span");
@@ -99,7 +102,7 @@ function confirm(){
     var idDescription="description"+numberS;
     descriptionDiv.setAttribute('id',idDescription);
     para.appendChild(descriptionDiv);
-    para.setAttribute("onclick","document.getElementById(document.getElementById(this.id).querySelector('.description').id).innerHTML=id;")
+    //para.setAttribute("onclick","document.getElementById(document.getElementById(this.id).querySelector('.description').id).innerHTML=id;")
     
     findNew();
 
@@ -115,3 +118,7 @@ function findNew(){
     if( document.getElementsByClassName('new')[0]!=null){
     document.getElementsByClassName('new')[0].remove();}
 }
+
+
+
+
