@@ -8,52 +8,34 @@
     <title>document</title>
 </head>
 <body>
-<div class="title"><strong>To-Do List</strong>
-</div>
+<h1 class="title"><strong>To-Do List</strong>
+</h1>
 <div class="goalForm">
     <button class="add" onclick="add()" > ADD GOAL</button>
 </div>
-<div class="searchBar">
-    <input type="text" id="searchInput" onkeyup="filterSearch()" placeholder="Search for goals.." >
-</div>
-<span><a href="indexChange.html">Switch</a></span>
 <div class="goals">
-</div>
-<div class="iconPicker">
-    <div class="slides" onclick="icon(1)">
-        <div class="numbertext">1 / 3</div>
-        <img src="images/1.jpg" style="width:100%">
-    </div>
-    <div class="slides" onclick="icon(2)">
-        <div class="numbertext">2 / 3</div>
-        <img src="images/2.jpg" style="width:100%">
-    </div>
-    <div class="slides" onclick="icon(3)">
-        <div class="numbertext">3 / 3</div>
-        <img src="images/3.jpg" style="width:100%">
-    </div>
-    <div style="text-align:center">
-        <span class="dot" onclick="slides(1)"></span> 
-        <span class="dot" onclick="slides(2)"></span> 
-        <span class="dot" onclick="slides(3)"></span>
-      </div>
 </div>
 <div class="form" id="formGoal">
     <form class="formG">
         <div class="container">
-            <label><b>Goal Name</b></label>
-            <input class="nameGoal" type="text" placeholder="Enter goal name." id="nameG" required></inptut>
-            <label><b>Goal Description</b></label>
-            <input type="text" placeholder="Enter goal description." id="descriptionG" required></inptut>
-            <label><b>Color</b></label>
-            <input type="color" id="colorG" value="#2BE249" required>
+            <div class="input">
+                <label><b>Goal Name</b></label>
+            </div>
+            <div class="input">
+                <input class="nameGoal" type="text" placeholder="Enter goal name." id="nameG" required></inptut>
+            </div>
+            <div class="input">
+                <label><b>Goal Description</b></label>
+            </div>
+            <div class="input">
+                <input type="text" placeholder="Enter goal description." id="descriptionG" required></inptut>
+            </div>
             <span class="nameRequired" >Goal name is required </span>
         </div>
-        <button type="button" onclick="confirm()">CONFIRM</button>
-        <button type="button" onclick="cancel()">cancel</button>
+        <button class="formButton" type="button" onclick="confirm()">CONFIRM</button>
+        <button class="formButton" type="button" onclick="cancel()">cancel</button>
     </form>
 </div>
-<button onclick="sort()">Sort</button>
 <script src="main.js" ></script>
 </body>
 </html>

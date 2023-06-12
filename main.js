@@ -1,53 +1,3 @@
-var idImageSelector
-
-function sortOld() {
-    var list = document.getElementByClass("goals");
-    var unSorted=true;
-    var switchY;
-    while(unSorted){
-        unSorted=false;
-        goals =  list.getElementByClass("goal");
-        for(i=0;i<(goals.length-1);i++){
-            switchY = false;
-            print(goals[i].innerHTML.toLowerCase());
-            if(goals[i].innerHTML.toLowerCase()>goals[i+1].innerHTML.toLowerCase()){
-                switchY=true;
-                break;
-            }
-        }
-        if(switchY){
-            goals[i].parentNode.insertBefore(goals[i+1],goals[i]);
-            unSorted=true;
-        }
-    }
-}
-
-function sort(){
-    b=1;
-    while(document.getElementById(b)!=null){
-        i=1;
-        while(document.getElementById(i)!=null){
-            j=i-1;
-            k=i
-    
-            while(1<=k&&j>=0){
-                console.log(k)
-                console.log(j)
-                console.log(document.getElementsByClassName('name')[k].innerText)
-                console.log(document.getElementsByClassName('name')[j].innerText)
-                if(document.getElementsByClassName('name')[k].innerText<document.getElementsByClassName('name')[j].innerText){
-                switchElements(j-1,j);
-                j--;
-                console.log("swap")
-                }else{
-                k=0;}
-            }
-            i++;
-        }
-        b++
-        addAndRemoveAll(i);
-    }
-}
 
 function addAndRemoveAll(i){
     k=0;
@@ -59,24 +9,12 @@ function addAndRemoveAll(i){
     }
 }
 
-function switchElements(i,j){
-    const paraI=document.getElementById(i).parentNode;
-    const paraJ=document.getElementById(j).parentNode;
-    paraJ.getElementsByClassName('done')[0].setAttribute('id',i);
-    //paraJ.getElementsByClassName('descriprion')[0].setAttribute('id',"description"+i);
-    paraI.getElementsByClassName('done')[0].setAttribute('id',j);
-    //paraI.getElementsByClassName('descriprion')[0].setAttribute('id',"description"+j);
-    
-}
-
 var i=0;
 function typeDescription(id){
     divDid=findPlacement(id);
     document.getElementById(divDid).innerHTML=id;
     
 }
-
-//document.getElementById(document.getElementById(id).querySelector('.description').id).innerHTML=id;
 
 
 function findPlacement(id){
@@ -86,11 +24,14 @@ function findPlacement(id){
 }
 
 function add(){
-    document.getElementById('formGoal').style.display='block'
+    
+    document.getElementById('formGoal').style.width="750px";
+    document.getElementById('nameG').value="";
+    document.getElementById('descriptionG').value="";
     
 }
 function cancel(){
-    document.getElementById('formGoal').style.display='none'
+    document.getElementById('formGoal').style.width="0";
 }
 
 function idFind(){
@@ -105,7 +46,6 @@ function confirm(){
     var goalName=document.getElementById("nameG").value
     if(goalName!=""){
     var goalDescription=document.getElementById("descriptionG").value
-    var goalColor=document.getElementById("colorG").value;
 
     //para
     var para=document.createElement("div");
@@ -137,8 +77,7 @@ function confirm(){
         //works if not changed in js
         para.classList.toggle('checked');
         spanDone.classList.toggle('checked');
-        progressDiv.classList.toggle('checked');
-        barDiv.classList.toggle('checked');
+    
 
         //works
         spanName.classList.toggle('checkedName');
@@ -157,15 +96,6 @@ function confirm(){
     spanClose.innerHTML='&times;';
     para.appendChild(spanClose);
 
-    //icon
-    var icon=document.createElement("span");
-    icon.setAttribute('class','icon');
-    icon.setAttribute('onclick','addIcon(this.parentElement)');
-    var img=document.createElement("img");
-    img.setAttribute('class','image');
-    img.setAttribute('src','images/1.jpg');
-    icon.appendChild(img);
-    para.appendChild(icon)
 
     //description
     var descriptionDiv=document.createElement("div");
@@ -174,23 +104,13 @@ function confirm(){
     descriptionDiv.setAttribute('id',idDescription);
     para.appendChild(descriptionDiv);
     para.setAttribute("onclick","document.getElementById(document.getElementById(this.id).querySelector('.description').id).innerHTML=id;")
-
-    //progress
-    var progressDiv=document.createElement("div");
-    progressDiv.setAttribute('class','progress');
-    var barDiv=document.createElement("div");
-    barDiv.setAttribute('class','bar');
-    progressDiv.appendChild(barDiv)
-    para.appendChild(progressDiv);
-
+    
     findNew();
-    para.style.backgroundColor=goalColor,
-    spanDone.style.color=goalColor;
 
     document.getElementsByClassName('goals')[0].appendChild(para)
 
 
-    document.getElementById('formGoal').style.display='none';
+    document.getElementById('formGoal').style.width="0";
 
     } else {
         //document.getElementById('nameRequired').ClassList === 'formGoalRequired'
@@ -205,33 +125,8 @@ function confirm(){
 
 
 function findNew(){
-    document.getElementsByClassName('new')[0].remove();
-}
-
-function progress(id) {
-    var i = 0;
-  if (i == 0) {
-    i = 1;
-    var para = document.getElementsByClassName("bar")[id];
-    var width = 1;
-    var id = setInterval(frame, 30);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        para.style.display='none'
-        i = 0;
-      } else {
-        width++;
-        wide = width + "%";
-        para.style.width = wide;
-      }
-    }
-  }
-}
-function addIcon(parent) {
-    idImageSelector=parent.querySelector('.done').id;
-    document.getElementsByClassName('iconPicker')[0].style.display="block";
-    document.getElementsByClassName('slides')[0].style.display="block";
+    if( document.getElementsByClassName('new')[0]!=null){
+    document.getElementsByClassName('new')[0].remove();}
 }
 
 function slides(n) {
@@ -279,4 +174,6 @@ function filterSearch(){
         }
     }
 }
+
+
 
