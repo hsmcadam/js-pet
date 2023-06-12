@@ -157,7 +157,6 @@ div.goal:nth-child(even) {
     font-weight: bold;
 }  
 
-
 .nameRequired {
     display: none;
 }
@@ -173,11 +172,6 @@ div.goal:nth-child(even) {
     padding: 8px 12px;
     position: absolute;
     top: 0;
-}
-
-
-@media (min-width: 900px) {
-  
 }
 
 #formGoal{
@@ -200,76 +194,61 @@ div.goal:nth-child(even) {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    animation-name: animatetop;
+    animation-name: fromtop;
     animation-duration: 0.4s
-  }
-
-  @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-  }
+}
   
-  @keyframes animatetop {
+@keyframes fromtop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
-  }
-  
-  
+}
+
 @media screen and (max-width: 1000px) {
    
-div.goal.checked {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-left: 60px;
+    div.goal.checked {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-left: 60px;
+    }
+
+    .goal{
+       padding: 20px;
+       background-color: rgb(43, 226, 73);
+      color:white;
+      margin: 0px;
+      margin-left: 50px;
+      margin-right: 50px;
+      padding-left: 60px;
+    }
+
+    .goalForm{
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .title{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .done{
+        position: absolute;
+        right:200px;
+    }
+
+    .new{
+        position: absolute;
+        left:200px;
+    }
+
+    .close{
+        position: absolute;
+       right:100px;
+    }
+
 }
 
-
-.goal{
-    padding: 20px;
-    background-color: rgb(43, 226, 73);
-    color:white;
-    margin: 0px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-left: 60px;
-}
-
-.goalForm{
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-
-.title{
-    margin-left: 50px;
-    margin-right: 50px;
-
-}
-
-.done{
-    position: absolute;
-    right:200px;
-}
-
-.new{
-    position: absolute;
-    left:200px;
-}
-
-.close{
-    position: absolute;
-    right:100px;
-}
-
-
-
-  }
-
-
-  
-
-
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
    
     div.goal.checked {
         margin-left: 25px;
@@ -317,8 +296,4 @@ div.goal.checked {
     
     
     
-      }
-    
-      
-      
-      
+}
