@@ -228,12 +228,10 @@ function progress(id) {
     }
   }
 }
-//<img src="img_avatar2.png" alt="Avatar woman">
 function addIcon(parent) {
     idImageSelector=parent.querySelector('.done').id;
     document.getElementsByClassName('iconPicker')[0].style.display="block";
     document.getElementsByClassName('slides')[0].style.display="block";
-    //document.getElementsByClassName('chooseImg');
 }
 
 function slides(n) {
