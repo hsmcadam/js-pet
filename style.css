@@ -5,6 +5,7 @@
 }
 
 .add{
+    cursor: pointer;
     background-color: white;
     border: none;
     color: #f41e1e;
@@ -29,6 +30,7 @@ div.goal.checked {
 }
 
 .formButton{
+    cursor: pointer;
     transition: 0.3s;
     background-color: #f41e1e;
     border: none;
@@ -106,6 +108,7 @@ div.goal:nth-child(even) {
 }
 
 .close{
+    cursor: pointer;
     position: absolute;
     right:350px;
     color: white;
@@ -130,6 +133,7 @@ div.goal:nth-child(even) {
     margin-left: 25px;
     background-color:white;
     color: rgb(43, 226, 73);
+    cursor: pointer;
 }
 
 .nameRequired{
@@ -196,6 +200,10 @@ div.goal:nth-child(even) {
     padding-top: 60px;
     animation-name: fromtop;
     animation-duration: 0.4s
+}
+
+.goals{
+    align-content: center;
 }
   
 @keyframes fromtop {
@@ -297,3 +305,7 @@ div.goal:nth-child(even) {
     
     
 }
+    
+      
+      
+      
