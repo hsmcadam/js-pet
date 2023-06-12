@@ -1,4 +1,5 @@
 
+
 .input{
     margin: 10px;
 }
@@ -28,6 +29,7 @@ div.goal.checked {
 }
 
 .formButton{
+    transition: 0.3s;
     background-color: #f41e1e;
     border: none;
     color: white;
@@ -103,13 +105,9 @@ div.goal:nth-child(even) {
     vertical-align: middle;
 }
 
-.goal:hover{
-    transition: 0.5s;
-    transform: scale(1.25);
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.3)
-}
-
 .close{
+    position: absolute;
+    right:350px;
     color: white;
     font-weight: bold;
     margin-left: 25px;
@@ -118,6 +116,8 @@ div.goal:nth-child(even) {
 
 .new{
     background-color: red;
+    position: absolute;
+    left:460px;
     color: white;
     padding: 4px 8px;
     text-align: center;
@@ -125,6 +125,8 @@ div.goal:nth-child(even) {
 }
 
 .done{
+    position: absolute;
+    right:400px;
     margin-left: 25px;
     background-color:white;
     color: rgb(43, 226, 73);
@@ -145,18 +147,6 @@ div.goal:nth-child(even) {
 .formGoalRequired{
     display: block;
 }
-
-/*.form{
-    display: none;
-    text-align: center;
-    position:fixed;
-    z-index: 1;
-    left: 0;
-    top:0;
-    background-color: white;
-    padding: 60px;
-
-}*/
 
 .container{
     padding: 16px;
@@ -186,27 +176,22 @@ div.goal:nth-child(even) {
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
   
 }
 
-
-button{
-display: inline-block;
-  
-border: 1px solid var(--color-border);
-border-radius: 5px;
-padding: calc(var(--spacing) / 2) calc(var(--spacing));
-text-decoration: none;
-
-color: var(--color-text);
-background-color: var(--color-primary);}
+#formGoal{
+    position: fixed;
+}
 
 .form {
+    display:none;
+    position: fixed;
+    overflow-x: hidden;
     text-align: center;
     color: white;
     height: 100%;
-    width: 0;
+    width: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -215,4 +200,125 @@ background-color: var(--color-primary);}
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    animation-name: animatetop;
+    animation-duration: 0.4s
   }
+
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  
+@media screen and (max-width: 1000px) {
+   
+div.goal.checked {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 60px;
+}
+
+
+.goal{
+    padding: 20px;
+    background-color: rgb(43, 226, 73);
+    color:white;
+    margin: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 60px;
+}
+
+.goalForm{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.title{
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+.done{
+    position: absolute;
+    right:200px;
+}
+
+.new{
+    position: absolute;
+    left:200px;
+}
+
+.close{
+    position: absolute;
+    right:100px;
+}
+
+
+
+  }
+
+
+  
+
+
+  @media screen and (max-width: 600px) {
+   
+    div.goal.checked {
+        margin-left: 25px;
+        margin-right: 25px;
+        padding-left: 30px;
+    }
+    
+    
+    .goal{
+        padding: 20px;
+        background-color: rgb(43, 226, 73);
+        color:white;
+        margin: 0px;
+        margin-left: 25px;
+        margin-right: 25px;
+        padding-left: 30px;
+    }
+    
+    .goalForm{
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    
+    
+    .title{
+        margin-left: 25px;
+        margin-right: 25px;
+    
+    }
+    
+    .done{
+        position: absolute;
+        right:100px;
+    }
+    
+    .new{
+        position: absolute;
+        left:10px;
+    }
+    
+    .close{
+        position: absolute;
+        right:50px;
+    }
+    
+    
+    
+      }
+    
+      
+      
+      
