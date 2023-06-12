@@ -44,7 +44,6 @@ div.goal.checked {
 }
 
 div.goal.checked::before {
-    content: '';
     position: absolute;
     border-color: #fff;
     border-style: solid;
