@@ -1,13 +1,64 @@
 
+.input{
+    margin: 10px;
+}
+
+.add{
+    background-color: white;
+    border: none;
+    color: #f41e1e;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
 div.goal.checked {
     background-color: grey;
     padding: 20px;
     color:white;
-    margin: 40px;
+    margin: 0px;
     margin-left: 300px;
-    margin-right: 500px;
+    margin-right: 300px;
     padding-left: 60px;
 }
+
+.formButton{
+    background-color: #f41e1e;
+    border: none;
+    color: white;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+div.goal.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+  }
+
+div.goal:nth-child(even) {
+    background-color: rgb(30, 160, 52);
+  }
 
 .done.checked {
     background-color: grey;
@@ -21,19 +72,32 @@ div.goal.checked {
     padding: 20px;
     background-color: rgb(43, 226, 73);
     color:white;
-    margin: 40px;
+    margin: 0px;
     margin-left: 300px;
-    margin-right: 500px;
+    margin-right: 300px;
     padding-left: 60px;
 }
 
 .goalForm{
+    margin-left: 300px;
+    margin-right: 300px;
     text-align: center;
     vertical-align: middle;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    background-color: red;
+    margin-top: 0px;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
 }
 
+
 .title{
+    margin-left: 300px;
+    margin-right: 300px;
     text-align: center;
+    margin-bottom: 0px;
     background-color: red;
     color: white;
     height: 30px;
@@ -41,6 +105,7 @@ div.goal.checked {
 }
 
 .goal:hover{
+    transition: 0.5s;
     transform: scale(1.25);
     box-shadow: 0 8px 12px 0 rgba(0,0,0,0.3)
 }
@@ -71,11 +136,18 @@ div.goal.checked {
     display: none;
 }
 
+.header{
+    padding-top: 40px;
+    padding-bottom: 80px;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;}
+
 .formGoalRequired{
     display: block;
 }
 
-.form{
+/*.form{
     display: none;
     text-align: center;
     position:fixed;
@@ -85,7 +157,7 @@ div.goal.checked {
     background-color: white;
     padding: 60px;
 
-}
+}*/
 
 .container{
     padding: 16px;
@@ -106,44 +178,6 @@ div.goal.checked {
     color: red;
 }
 
-.progress.checked {
-    width: 100%;
-    background-color: #ddd;
-    margin-top: 15px;
-    margin: 10px;
-}
-  
-.bar.checked {
-
-    width: 1%;
-    height: 20px;
-    background-color: #00ff1e;
-}
-
-.icon{
-    left: 100%;
-}
-
-.image {
-    width: 100px;
-    border-radius: 25%;
-    float: right;
-  }
-
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-  .active, .dot:hover {
-    background-color: #717171;
-  }
-  
 .numbertext {
     color: #f2f2f2;
     font-size: 12px;
@@ -153,21 +187,33 @@ div.goal.checked {
 }
 
 
-.slides{
-    display: none;
-}
-
-.iconPicker {
-    display: none;
-    text-align: center;
-    position:fixed;
-    z-index: 1;
-    left: 0;
-    top:0;
-    background-color: white;
-    padding: 120px;
-}
-
 @media (min-width: 600px) {
   
 }
+
+
+button{
+display: inline-block;
+  
+border: 1px solid var(--color-border);
+border-radius: 5px;
+padding: calc(var(--spacing) / 2) calc(var(--spacing));
+text-decoration: none;
+
+color: var(--color-text);
+background-color: var(--color-primary);}
+
+.form {
+    text-align: center;
+    color: white;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
