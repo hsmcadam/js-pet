@@ -1,22 +1,4 @@
 
-function addAndRemoveAll(i){
-    k=0;
-    while(k<i){
-        const paraK=document.getElementById(k).parentNode;
-        paraK.remove();
-        document.getElementsByClassName('goals')[0].appendChild(paraK);
-        k++;
-    }
-}
-
-var i=0;
-function typeDescription(id){
-    divDid=findPlacement(id);
-    document.getElementById(divDid).innerHTML=id;
-    
-}
-
-
 function findPlacement(id){
     divG=document.getElementById(id);
     divD=divG.querySelector('.description');
@@ -52,23 +34,26 @@ function confirm(){
     var para=document.createElement("div");
     para.classList.add("goal")
     para.setAttribute('id',goalDescription);
+    var flex =document.createElement("div")
+    flex.setAttribute('class','flex');
 
     //name
-    var spanName=document.createElement("span");
+    var spanName=document.createElement("div");
     spanName.setAttribute('class','name');
     spanName.innerHTML=goalName;
-    para.appendChild(spanName);
-    spanName.setAttribute('onclick', "this.parentElement.querySelector('.description').innerHTML=this.parentElement.id;");
+    para.appendChild(flex);
+    flex.appendChild(spanName);
+    spanName.setAttribute('onclick', "this.parentElement.parentElement.querySelector('.description').innerHTML=this.parentElement.parentElement.id;");
     
     //new
-    var spanNew=document.createElement("span");
+    var spanNew=document.createElement("div");
     spanNew.innerHTML=" New";
     spanNew.setAttribute('class','new');
-    para.appendChild(spanNew);
+    flex.appendChild(spanNew);
 
     //done
     var numberS =idFind();
-    var spanDone=document.createElement("span");
+    var spanDone=document.createElement("div");
     spanDone.innerHTML=" Complete ";
     spanDone.setAttribute('class','done');
     spanDone.addEventListener('click', function() {
@@ -86,14 +71,14 @@ function confirm(){
         })
     spanDone.setAttribute('id',numberS);
     //spanDone.setAttribute('onclick',"document.getElementsByClassName('name')[id].parentNode.style.background='grey';");
-    para.appendChild(spanDone);
+    flex.appendChild(spanDone);
 
     //close
-    var spanClose=document.createElement("span");
+    var spanClose=document.createElement("div");
     spanClose.setAttribute('class','close');
-    spanClose.setAttribute("onclick","this.parentElement.style.display='none';")
+    spanClose.setAttribute("onclick","this.parentElement.parentElement.style.display='none';")
     spanClose.innerHTML='&times;';
-    para.appendChild(spanClose);
+    flex.appendChild(spanClose);
 
 
     //description
@@ -116,9 +101,7 @@ function confirm(){
 
 function findNew(){
     if( document.getElementsByClassName('new')[0]!=null){
-    document.getElementsByClassName('new')[0].remove();}
+        document.getElementsByClassName('new')[0].parentElement.classList.toggle('old');
+        document.getElementsByClassName('new')[0].remove();}
 }
-
-
-
 
