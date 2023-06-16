@@ -1,4 +1,5 @@
 
+
 .input{
     margin: 10px;
 }
@@ -13,13 +14,13 @@
     padding: 10px 10px;
     text-align: center;
     font-size: 16px;
-    margin: 4px 2px;
+
     opacity: 0.8;
     transition: 0.3s;
 }
 
 div.goal.checked {
-    background-color: grey;
+    background-color: #C0C0C0;
     padding: 20px;
     color:white;
     margin: 0px;
@@ -59,7 +60,7 @@ div.goal.checked::before {
   }
 
 div.goal:nth-child(even) {
-    background-color: rgb(30, 160, 52);
+    background-color: #FFB6C1;
   }
 
 .done.checked {
@@ -73,7 +74,7 @@ div.goal:nth-child(even) {
 .goal{
     align-items: center;
     padding: 20px;
-    background-color: rgb(43, 226, 73);
+    background-color: #D8BFD8;
     color:white;
     margin: 0px;
     margin-left: 300px;
@@ -88,7 +89,7 @@ div.goal:nth-child(even) {
     vertical-align: middle;
     padding-top: 40px;
     padding-bottom: 80px;
-    background-color: red;
+    background-color: #F08080;
     margin-top: 0px;
     padding: 30px 40px;
     color: white;
@@ -97,37 +98,34 @@ div.goal:nth-child(even) {
 
 
 .title{
+    padding-top: 30px;
+    margin-top: 20px;
     margin-left: 300px;
     margin-right: 300px;
     text-align: center;
     margin-bottom: 0px;
-    background-color: red;
+    background-color: #F08080;
     color: white;
     height: 30px;
     vertical-align: middle;
 }
 
 .close{
-    position: center;
+    position: absolute;
+    right: 200px;
+    /*position: center;*/
     cursor: pointer;
     /*right:350px;*/
     color: white;
     font-weight: bold;
     margin-left: 25px;
     text-align: center;
+    font-size: 50px;
+    width: 100px;
 
 }
 
-.new{
-    position: center;
-    background-color: red;
-   /* left:460px;*/
-    color: white;
-    padding: 4px 8px;
-    text-align: center;
-    border-radius: 5px;
 
-}
 
 .flex div{
     -ms-flex : 1; 
@@ -140,14 +138,19 @@ div.goal:nth-child(even) {
   }
 
 .done{
-    position: center;
-   /* right:400px;
-    margin-left: 25px;*/
+    position: absolute;
+    right: 400px;
+    vertical-align: middle;
     background-color:white;
-    color: rgb(43, 226, 73);
+    color: #F08080;
     cursor: pointer;
     text-align: center;
-    width: 25%;
+    width: 100px;
+    font-size: 25px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .nameRequired{
@@ -156,8 +159,10 @@ div.goal:nth-child(even) {
 }
 
 .flex{
+    flex-wrap: nowrap;
     display: flex;
     width: 100%;
+    justify-content:flex-start;
 
 }
 
@@ -181,7 +186,9 @@ div.goal:nth-child(even) {
     position: center;
     text-align: center;
     font-weight: bold;
-    width: 25%;
+    /*width: 100px;*/
+    margin-left: 100px;
+    font-size: 30px;
 }  
 
 .nameRequired {
@@ -225,15 +232,34 @@ div.goal:nth-child(even) {
     animation-duration: 0.4s
 }
 
+.new {
+    
+    width: 60px;
+    font-size: 16px;
+    padding: 4px;
+    position: absolute;
+    text-align: center;
+    border-radius: 25px;
+    transform: rotate(20deg);
+    background-color: red;
+    color: white;
+}
+
+.space{
+    flex-shrink: 3;
+    width:10px;
+}
+
+
 .goals{
     align-content: center;
 }
   
 
 .description{
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
-    margin-left: 10%;
+    font-size: 20px;
 }
 
 @keyframes fromtop {
@@ -241,7 +267,7 @@ div.goal:nth-child(even) {
     to {top:0; opacity:1}
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1400px) {
    
     div.goal.checked {
         margin-left: 50px;
@@ -249,10 +275,12 @@ div.goal:nth-child(even) {
         padding-left: 60px;
     }
 
+    .done{
+        right: 200px;
+    }
+
     .goal{
        padding: 20px;
-       background-color: rgb(43, 226, 73);
-      color:white;
       margin: 0px;
       margin-left: 50px;
       margin-right: 50px;
@@ -264,6 +292,10 @@ div.goal:nth-child(even) {
       margin-right: 50px;
     }
 
+    .close{
+        right: 10px;
+    }
+
     .title{
         margin-left: 50px;
         margin-right: 50px;
@@ -271,7 +303,7 @@ div.goal:nth-child(even) {
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
    
     div.goal.checked {
         margin-left: 25px;
@@ -282,8 +314,6 @@ div.goal:nth-child(even) {
     
     .goal{
         padding: 20px;
-        background-color: rgb(43, 226, 73);
-        color:white;
         margin: 0px;
         margin-left: 25px;
         margin-right: 25px;
@@ -301,7 +331,10 @@ div.goal:nth-child(even) {
         margin-right: 25px;
     
     }
+
+    .space{
+        width: 50px;
+    }
     
     
 }
-      
